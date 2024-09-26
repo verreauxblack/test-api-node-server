@@ -53,7 +53,9 @@ app.get("/downloadFile", authenticateToken, (req, res) => {
     res.download("./sample.txt");
 });
 
+const port = process.env.PORT || 3000;
+
 // Start the server and listen on the specified port
-app.listen(3000, () => {
-    console.log(`Server is running on http://localhost:3000`);
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
 });
