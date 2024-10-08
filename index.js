@@ -14,7 +14,12 @@ app.use(bodyParser.json()); // Middleware to parse JSON bodies
 const generateToken = (user) => {
   return jwt.sign({ username: user.username }, JWT_SECRET, { expiresIn: user.expiresIn || '5m' });
 };
+const logRequestUrlMiddleWare = async (req, res, next) => {
+    console.log("request for" + req.originalUrl)
+    next();
+}
 
+app.use(logRequestUrlMiddleWare);
 // REST API route for login
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
