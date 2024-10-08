@@ -59,6 +59,11 @@ app.get("/downloadFile", authenticateToken, (req, res) => {
     return res.download("./sample.txt");
 });
 
+app.get("/no_auth/downloadFile", (req, res) => {
+    if (req.query.fileType === "jpg" ) return res.download("./onepiece_ace2.jpg");
+    return res.download("./sample.txt");
+});
+
 const port = process.env.PORT || 3000;
 
 // Start the server and listen on the specified port
