@@ -50,7 +50,8 @@ const authenticateToken = (req, res, next) => {
   };
   
 app.get("/downloadFile", authenticateToken, (req, res) => {
-    res.download("./sample.txt");
+    if (req.query.fileType === "jpg" ) return res.download("./onepiece_ace2.jpg");
+    return res.download("./sample.txt");
 });
 
 const port = process.env.PORT || 3000;
