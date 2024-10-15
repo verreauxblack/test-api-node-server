@@ -1,0 +1,3 @@
+Processes an incoming request by executing a query based on the connector type.
+It supports database connectors (`db_connector`) and REST APIs. After execution,
+it checks for failure conditions and sends an appropriate response back to the client.
