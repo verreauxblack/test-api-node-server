@@ -66,6 +66,9 @@ function downloadFile(req, res) {
         filePath = "./files/One-Piece-Volume-001.pdf";
       }
       break;
+    case "yobi_pdf":
+      filePath = "./files/WilfulDefaultForm_67aafa57c2a1b6477ef97b4d_s3.pdf";
+      break;
     default:
       filePath = "./files/sample.txt";
       break;
