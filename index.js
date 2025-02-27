@@ -69,9 +69,13 @@ function downloadFile(req, res) {
     case "yobi_pdf":
       filePath = "./files/WilfulDefaultForm_67aafa57c2a1b6477ef97b4d_s3.pdf";
       break;
-    default:
+    case "text:
       filePath = "./files/sample.txt";
       break;
+    default:
+      filePath = "./files/sample.txt";
+      res.status(404);
+      break;      
   }
   return res.download(filePath);
 }
