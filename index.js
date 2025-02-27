@@ -73,7 +73,7 @@ function downloadFile(req, res) {
       filePath = "./files/sample.txt";
       break;
     default:
-      return res.status(404);
+      res.status(404);
       break;      
   }
   return res.download(filePath);
