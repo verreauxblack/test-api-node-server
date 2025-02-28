@@ -76,7 +76,7 @@ function downloadFile(req, res) {
       return res.status(req.query.statusCode || 404).json({ message: "File is not found" });
       break;      
   }
-  return res.download(filePath);
+  return res.status(req.query.statusCode || 200).download(filePath);
 }
 
 app.get("/downloadFile", authenticateToken, downloadFile);
