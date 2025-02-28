@@ -73,10 +73,10 @@ function downloadFile(req, res) {
       filePath = "./files/sample.txt";
       break;
     default:
-      return res.status(req.query.statusCode || 404).json({ message: "File is not found" });
+      return res.status(parseInt(req.query.statusCode) || 404).json({ message: "File is not found" });
       break;      
   }
-  return res.status(req.query.statusCode || 200).download(filePath);
+  return res.status(parseInt(req.query.statusCode) || 200).download(filePath);
 }
 
 app.get("/downloadFile", authenticateToken, downloadFile);
