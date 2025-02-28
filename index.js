@@ -73,7 +73,7 @@ function downloadFile(req, res) {
       filePath = "./files/sample.txt";
       break;
     default:
-      res.status(404);
+      return res.status(404).json({ message: "File is not found" });
       break;      
   }
   return res.download(filePath);
