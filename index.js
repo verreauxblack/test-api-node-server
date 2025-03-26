@@ -72,6 +72,9 @@ function downloadFile(req, res) {
     case "text":
       filePath = "./files/sample.txt";
       break;
+    case "json":
+      filePath = "./files/sample.json";
+      break;
     default:
       return res.status(parseInt(req.query.statusCode) || 404).json({ message: "File is not found" });
       break;      
