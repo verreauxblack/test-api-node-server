@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
-
+const fs = require('fs');
 
 const JWT_SECRET = 'mysecretkey123'; // Use environment variables in production
 const validUsername = 'admin';
@@ -82,9 +82,19 @@ function downloadFile(req, res) {
   return res.status(parseInt(req.query.statusCode) || 200).download(filePath);
 }
 
+function sendLargeData (req, res) {
+   let dataPath = "./data/largeJson.json";
+   fs.readFile(dataPath, 'utf8', (err, data) => {
+     if (err) return res.status(500).json({ error: 'Failed to read data' });
+     res.json(JSON.parse(data));
+  });
+}
+
 app.get("/downloadFile", authenticateToken, downloadFile);
 
 app.get("/no_auth/downloadFile", downloadFile);
+
+app.get("/largeData", sendLargeData);
 
 const port = process.env.PORT || 3000;
 
